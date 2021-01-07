@@ -47,7 +47,6 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     justifyContent: 'center',
-    marginHorizontal: metrics.defaultMargin,
     marginVertical: metrics.smallMargin,
     shadowColor: '#000',
     shadowOffset: {

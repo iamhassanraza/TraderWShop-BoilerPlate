@@ -15,7 +15,7 @@ export default function QuantityView(props) {
         }}>
         <Icon name="remove" style={{...styles.icon, color: 'black'}} />
       </TouchableOpacity>
-      <Text style={styles.quantity}>{1}</Text>
+      <Text style={styles.quantity}>{props.value}</Text>
       <TouchableOpacity onPress={props.onAdd} style={styles.iconView}>
         <Icon name="add" style={styles.icon} />
       </TouchableOpacity>

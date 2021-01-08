@@ -41,7 +41,12 @@ export default function Header(props) {
 
     if (props.showAddToCart) {
       return (
-        <Icon name={'hearto'} color={'red'} size={metrics.height * 0.03}></Icon>
+        <TouchableOpacity onPress={() => props.onRightPress()}>
+          <Icon
+            name={'hearto'}
+            color={'red'}
+            size={metrics.height * 0.03}></Icon>
+        </TouchableOpacity>
       );
     }
 

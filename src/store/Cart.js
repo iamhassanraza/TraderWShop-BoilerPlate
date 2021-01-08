@@ -1,5 +1,5 @@
 import {createSlice} from '@reduxjs/toolkit';
-
+import data from '../data'
 // ________________________________________________________________________
 
 // ACTIONS
@@ -26,6 +26,7 @@ import {createSlice} from '@reduxjs/toolkit';
 
 const initial_cart = {
   items: {},
+  cart : {},
   totalItems: 0,
   totalPrice: 0,
 };

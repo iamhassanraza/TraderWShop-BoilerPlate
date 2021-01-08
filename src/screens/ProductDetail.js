@@ -20,10 +20,16 @@ import {useDispatch} from 'react-redux';
 
 export default function ProductDetail(props) {
   const {item} = props.route.params;
-  const state = useSelector((state) => state);
+  const product = useSelector((state) => {
+    if (state.Cart.items.hasOwnProperty(item.id)) {
+      return state.Cart.items[item.id];
+    } else {
+      return item;
+    }
+  });
+  const totalPrice = useSelector((state) => state.Cart.totalPrice);
   const dispatch = useDispatch();
 
-  console.log('redux state', state);
   return (
     <View style={{flex: 1, backgroundColor: colors.lightBackground}}>
       <Header transparent showAddToCart></Header>
@@ -63,6 +69,7 @@ export default function ProductDetail(props) {
         <View style={{...commonstyles.spaceBetween}}>
           <View>
             <QuantityView
+              value={product?.quantity || 0}
               onAdd={() => {
                 dispatch(Add({...item}));
               }}
@@ -71,7 +78,7 @@ export default function ProductDetail(props) {
                 dispatch(Remove({...item}));
               }}></QuantityView>
           </View>
-          <Text style={commonstyles.smallText}>Price $53</Text>
+          <Text style={commonstyles.smallText}>Total Price: ${totalPrice}</Text>
         </View>
         <Button
           onPress={() => {

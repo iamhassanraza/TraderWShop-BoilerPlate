@@ -1,6 +1,6 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
-import {FastImage} from '../index';
+import {FastImage, AddToFav} from '../index';
 import {colors, metrics, commonstyles} from '../../utils/Theme';
 export default function ItemCard(props) {
   const {item} = props;
@@ -12,8 +12,18 @@ export default function ItemCard(props) {
         backgroundColor: colors.background,
       }}>
       <View style={{flex: 2, zIndex: 100, width: '70%', alignSelf: 'center'}}>
+        <View
+          style={{
+            position: 'absolute',
+            bottom: -10,
+            right: -10,
+            zIndex: 10,
+          }}>
+          <AddToFav col item={item}></AddToFav>
+        </View>
+
         <FastImage
-          contain
+          stretch
           style={{
             width: '100%',
             height: '100%',

@@ -6,6 +6,7 @@ export default function VerticalList(props) {
   return (
     <View>
       <FlatList
+        showsVerticalScrollIndicator={false}
         numColumns={2}
         keyExtractor={(item, index) => index.toString()}
         {...props}

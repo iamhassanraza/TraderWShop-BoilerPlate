@@ -9,6 +9,10 @@ import VerticalList from './VerticalList';
 import QuantityView from './QuantityView';
 import Button from './Button';
 import Input from './Input';
+import AddToFav from './AddToFav';
+import CartIcon from './CartIcon';
+import ItemCard from './AppSpecific/ItemCard';
+
 
 export {
   SearchBar,
@@ -21,5 +25,8 @@ export {
   VerticalList,
   QuantityView,
   Button,
+  AddToFav,
   Input,
+  ItemCard,
+  CartIcon,
 };

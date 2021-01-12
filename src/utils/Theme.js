@@ -61,7 +61,7 @@ export const text = {
     marginHorizontal: metrics.defaultMargin,
     marginTop: metrics.defaultMargin,
     marginBottom: metrics.smallMargin,
-    color: colors.secondary,
+    // color: colors.secondary,
   },
   subheading: {
     fontSize: 18,

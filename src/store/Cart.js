@@ -1,5 +1,5 @@
 import {createSlice} from '@reduxjs/toolkit';
-import data from '../data'
+import data from '../data';
 // ________________________________________________________________________
 
 // ACTIONS
@@ -26,7 +26,8 @@ import data from '../data'
 
 const initial_cart = {
   items: {},
-  cart : {},
+  cart: {},
+  favItems: {},
   totalItems: 0,
   totalPrice: 0,
 };
@@ -68,6 +69,17 @@ const CartSlide = createSlice({
       cart.totalPrice = 0;
       cart.items = [];
     },
+    addToFav: (cart, action) => {
+      if (cart.favItems.hasOwnProperty(action.payload.id)) {
+        console.log('removing from fav');
+        delete cart.favItems[action.payload.id];
+      } else {
+        console.log('adding to fav');
+
+        cart.favItems[action.payload.id] = action.payload;
+        // cart.items[action.payload.id].isFav = true;
+      }
+    },
   },
 });
 
@@ -76,5 +88,5 @@ const formatPrice = (price) => {
   formatted_price = formatted_price.toFixed(2);
   return parseFloat(formatted_price);
 };
-export const {Add, Remove, emptyCart} = CartSlide.actions;
+export const {Add, Remove, emptyCart, addToFav} = CartSlide.actions;
 export default CartSlide.reducer;

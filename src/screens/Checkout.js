@@ -22,12 +22,42 @@ import ItemCard from '../components/AppSpecific/ItemCard';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {colors, metrics, fonts, text} from '../utils/Theme';
 
+import {useSelector} from 'react-redux';
+import {useDispatch} from 'react-redux';
+
 export default function Checkout(props) {
+  const cartItems = useSelector((state) => state.Cart.items);
+
+  console.log(cartItems, 'cart items');
   const [fname, setfname] = useState('');
   const [lname, setlname] = useState('');
   const [email, setemail] = useState('');
   const [phoneNumber, setphoneNumber] = useState('');
   const [address, setaddress] = useState('');
+
+  const toArray = (obj) => {
+    const arr = [];
+    for (const [key, value] of Object.entries(obj)) {
+      arr.push(value);
+    }
+    return arr;
+  };
+
+  const cartArray = toArray(cartItems);
+
+  if (cartArray.length === 0) {
+    return (
+      <View style={{flex: 1}}>
+        <Header title={'Checkout'}></Header>
+        <FastImage
+          style={{width: '100%', height: '100%'}}
+          source={{
+            uri:
+              'https://www.thesmokeyvapes.com/assets/front/images/empty-cart.png',
+          }}></FastImage>
+      </View>
+    );
+  }
 
   return (
     <View style={{flex: 1, backgroundColor: colors.background}}>

@@ -3,6 +3,7 @@ import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import {colors, metrics} from '../utils/Theme';
 import Icon from 'react-native-vector-icons/AntDesign';
 import Navigator from '../utils/Navigator';
+import AddToFav from '../components/AddToFav'
 // props
 // leftComponent ()=> <View>
 // rightComponent ()=> <View>
@@ -43,7 +44,7 @@ export default function Header(props) {
       return (
         <TouchableOpacity onPress={() => props.onRightPress()}>
           <Icon
-            name={'hearto'}
+            name={props.fill ? 'heart' : 'hearto'}
             color={'red'}
             size={metrics.height * 0.03}></Icon>
         </TouchableOpacity>

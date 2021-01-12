@@ -15,6 +15,8 @@ import {
   FastImage,
   Rating,
   VerticalList,
+  AddToFav,
+  CartIcon,
 } from '../components';
 import Navigator from '../utils/Navigator';
 import ItemCard from '../components/AppSpecific/ItemCard';
@@ -24,7 +26,26 @@ import {colors, commonstyles, metrics} from '../utils/Theme';
 export default function Home() {
   return (
     <View style={{flex: 1, backgroundColor: colors.background}}>
-      <Header showCart hideLeft title={'Title'}></Header>
+      <Header
+        rightCompnent={() => (
+          <View
+            style={{
+              flexDirection: 'row',
+              alignItems: 'center',
+              marginRight: 15,
+            }}>
+            <AddToFav
+              onPress={() => Navigator.navigate('Favourites')}
+              size={25}
+              disabled></AddToFav>
+            <View style={{marginLeft: 1}}>
+              <CartIcon
+                onPress={() => Navigator.navigate('Checkout')}></CartIcon>
+            </View>
+          </View>
+        )}
+        hideLeft
+        title={'Title'}></Header>
 
       <ScrollView
         style={{
@@ -34,7 +55,9 @@ export default function Home() {
         <Text style={{...commonstyles.smallText, fontWeight: '500'}}>
           Get Popular Fashion at Home
         </Text>
-        <SearchBar disable></SearchBar>
+        <SearchBar
+          onPress={() => Navigator.navigate('Search')}
+          disable></SearchBar>
         <View
           style={{
             ...commonstyles.spaceBetween,

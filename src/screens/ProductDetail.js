@@ -11,10 +11,11 @@ import {
   VerticalList,
   QuantityView,
   Button,
+  AddToFav,
 } from '../components';
 import Navigator from '../utils/Navigator';
 import {colors, commonstyles, metrics} from '../utils/Theme';
-import {Add, Remove, emptyCart} from '../store/Cart';
+import {Add, Remove, emptyCart, addToFav} from '../store/Cart';
 import {useSelector} from 'react-redux';
 import {useDispatch} from 'react-redux';
 
@@ -27,14 +28,18 @@ export default function ProductDetail(props) {
       return item;
     }
   });
+
   const totalPrice = useSelector((state) => state.Cart.totalPrice);
   const dispatch = useDispatch();
 
   return (
     <View style={{flex: 1, backgroundColor: colors.lightBackground}}>
-      <Header transparent showAddToCart></Header>
+      <Header
+        rightCompnent={() => <AddToFav item={item}></AddToFav>}
+        transparent></Header>
       <View style={{flex: 1, backgroundColor: colors.background}}>
         <FastImage
+          cover
           style={{width: '100%', height: '100%'}}
           source={item.image}></FastImage>
       </View>

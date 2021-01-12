@@ -42,8 +42,9 @@ export default function Checkout(props) {
     }
     return arr;
   };
-
+  //use this array below in your horizontal list
   const cartArray = toArray(cartItems);
+  console.log(cartArray, 'cart array');
 
   if (cartArray.length === 0) {
     return (

@@ -35,6 +35,23 @@ export default function Favourites() {
     });
     return arr;
   });
+
+  if (favList.length === 0) {
+    return (
+      <View style={{flex: 1}}>
+        <Header title={'Favourites'}></Header>
+        <View
+          style={{
+            flex: 1,
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}>
+          <Text style={commonstyles.largeText}>No items Saved</Text>
+        </View>
+      </View>
+    );
+  }
+
   return (
     <View style={{flex: 1, backgroundColor: colors.background}}>
       <Header title={'Favourites'}></Header>

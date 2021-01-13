@@ -66,6 +66,7 @@ export default function Home() {
           }}>
           <Text style={{...commonstyles.smallText}}>Categories</Text>
           <Text
+            onPress={() => Navigator.navigate('AllCategories')}
             style={[
               commonstyles.xsText,
               {color: colors.primary, fontWeight: 'bold'},
@@ -75,9 +76,13 @@ export default function Home() {
         </View>
         <View>
           <HorizontalList
-            data={[{name: 'hassan'}, {name: 'jaff'}, {name: 'sad'}]}
+            data={data.category}
             renderItem={({item}) => {
-              return <CategoryCard item={item}></CategoryCard>;
+              return (
+                <CategoryCard
+                  style={{width: 200, marginRight: metrics.smallMargin}}
+                  item={item}></CategoryCard>
+              );
             }}
           />
         </View>
@@ -87,6 +92,9 @@ export default function Home() {
           }}>
           <Text style={{...commonstyles.smallText}}>Popular Fashion</Text>
           <Text
+            onPress={() =>
+              Navigator.navigate('AllProducts', {show: 'All Products'})
+            }
             style={[
               commonstyles.xsText,
               {color: colors.primary, fontWeight: 'bold'},

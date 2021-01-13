@@ -64,7 +64,7 @@ export default function ProductDetail(props) {
         </View>
         <SizeInspector
           getSelectedValue={(val) => setsize(val)}
-          arr={[1, 2, 3, 4]}></SizeInspector>
+          arr={['XS', 'S', 'M', 'L']}></SizeInspector>
         <ColorInspector
           getSelectedValue={(val) => setcolor(val)}
           arr={['red', 'yellow', 'orange', 'green', 'blue']}></ColorInspector>
@@ -94,7 +94,7 @@ export default function ProductDetail(props) {
           onPress={() => {
             Navigator.navigate('Checkout');
           }}
-          text={'PREE'}></Button>
+          text={'Go To Checkout'}></Button>
       </View>
     </View>
   );

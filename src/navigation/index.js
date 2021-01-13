@@ -12,7 +12,8 @@ import ProductDetail from '../screens/ProductDetail';
 import Checkout from '../screens/Checkout';
 import Search from '../screens/Search';
 import Favourites from '../screens/Favourites';
-import AllCategories from '../screens/AllCategories'
+import AllCategories from '../screens/AllCategories';
+import AllProducts from '../screens/AllProducts';
 
 const Stack = createStackNavigator();
 
@@ -23,7 +24,7 @@ export default function index() {
         Navigator.setTopLevelNavigator(navigatorRef);
       }}>
       <Stack.Navigator
-        initialRouteName="AllCategories"
+        initialRouteName="Home"
         screenOptions={{
           headerShown: false,
           cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
@@ -34,6 +35,7 @@ export default function index() {
         <Stack.Screen name="Search" component={Search} />
         <Stack.Screen name="Favourites" component={Favourites} />
         <Stack.Screen name="AllCategories" component={AllCategories} />
+        <Stack.Screen name="AllProducts" component={AllProducts} />
       </Stack.Navigator>
     </NavigationContainer>
   );

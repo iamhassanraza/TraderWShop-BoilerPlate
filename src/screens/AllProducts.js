@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   StyleSheet,
   Text,
@@ -19,24 +19,42 @@ import {
   CartIcon,
 } from '../components';
 import Navigator from '../utils/Navigator';
-import CategoryCard from '../components/AppSpecific/CategoryCart';
+import ItemCard from '../components/AppSpecific/ItemCard';
 import data from '../data';
 import {useSelector} from 'react-redux';
 
 import {colors, commonstyles, metrics} from '../utils/Theme';
 
-export default function AllCateogries() {
+export default function AllProductss(props) {
+  const {show} = props.route.params;
+
+  const [allProducts, setAllProducts] = useState([]);
+  const [title, settitle] = useState('');
+
+  useEffect(() => {
+    if (show === 'category') {
+      settitle(props.route.params.item.category);
+      setAllProducts(
+        data.products.filter(
+          (val) => val.categoryid === props.route.params.item.id,
+        ),
+      );
+    } else {
+      settitle('All Products');
+      setAllProducts(data.products);
+    }
+  }, []);
   return (
     <View style={{flex: 1, backgroundColor: colors.background}}>
-      <Header title={'All Categories'}></Header>
+      <Header title={title}></Header>
       <VerticalList
         scrollEnabled={true}
-        data={data.category}
+        data={allProducts}
         renderItem={({item}) => (
           <TouchableOpacity
             onPress={() => Navigator.navigate('ProductDetail', {item})}
             style={commonstyles.VerticalListContainer}>
-            <CategoryCard item={item}></CategoryCard>
+            <ItemCard item={item}></ItemCard>
           </TouchableOpacity>
         )}></VerticalList>
     </View>

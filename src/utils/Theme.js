@@ -58,7 +58,7 @@ export const text = {
   heading: {
     fontSize: 20,
     fontWeight: '700',
-    marginHorizontal: metrics.defaultMargin,
+    // marginHorizontal: metrics.defaultMargin,
     marginTop: metrics.defaultMargin,
     marginBottom: metrics.smallMargin,
     // color: colors.secondary,

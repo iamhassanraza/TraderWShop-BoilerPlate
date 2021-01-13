@@ -44,6 +44,8 @@ const CartSlide = createSlice({
       const existingItem = cart.items.hasOwnProperty(id);
       if (existingItem) {
         cart.items[id].quantity += 1;
+        cart.items[id].color = action.payload.color;
+        cart.items[id].size = action.payload.size;
       } else {
         cart.items[id] = {...action.payload, quantity: 1};
       }
@@ -58,6 +60,8 @@ const CartSlide = createSlice({
           delete cart.items[id];
         } else {
           cart.items[id].quantity -= 1;
+          cart.items[id].color = action.payload.color;
+          cart.items[id].size = action.payload.size;
         }
         if (cart.totalItems > 0) {
           cart.totalItems--;

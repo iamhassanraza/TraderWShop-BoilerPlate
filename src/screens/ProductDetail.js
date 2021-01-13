@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {
   SearchBar,
@@ -20,6 +20,8 @@ import {useSelector} from 'react-redux';
 import {useDispatch} from 'react-redux';
 
 export default function ProductDetail(props) {
+  const [color, setcolor] = useState('red');
+  const [size, setsize] = useState(1);
   const {item} = props.route.params;
   const product = useSelector((state) => {
     if (state.Cart.items.hasOwnProperty(item.id)) {
@@ -60,8 +62,11 @@ export default function ProductDetail(props) {
             {item.description}
           </Text>
         </View>
-        <SizeInspector arr={[1, 2, 3, 4]}></SizeInspector>
+        <SizeInspector
+          getSelectedValue={(val) => setsize(val)}
+          arr={[1, 2, 3, 4]}></SizeInspector>
         <ColorInspector
+          getSelectedValue={(val) => setcolor(val)}
           arr={['red', 'yellow', 'orange', 'green', 'blue']}></ColorInspector>
       </View>
       <View
@@ -76,7 +81,7 @@ export default function ProductDetail(props) {
             <QuantityView
               value={product?.quantity || 0}
               onAdd={() => {
-                dispatch(Add({...item}));
+                dispatch(Add({...item, size: size, color: color}));
               }}
               onMinus={() => {
                 console.log('chala');

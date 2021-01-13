@@ -20,6 +20,7 @@ import {
 } from '../components';
 import Navigator from '../utils/Navigator';
 import ItemCard from '../components/AppSpecific/ItemCard';
+import CategoryCard from '../components/AppSpecific/CategoryCart';
 import data from '../data';
 
 import {colors, commonstyles, metrics} from '../utils/Theme';
@@ -48,6 +49,7 @@ export default function Home() {
         title={'Title'}></Header>
 
       <ScrollView
+        showsVerticalScrollIndicator={false}
         style={{
           marginHorizontal: metrics.defaultMargin,
         }}>
@@ -75,34 +77,7 @@ export default function Home() {
           <HorizontalList
             data={[{name: 'hassan'}, {name: 'jaff'}, {name: 'sad'}]}
             renderItem={({item}) => {
-              return (
-                <View
-                  style={{
-                    width: 200,
-                    height: 200,
-                    backgroundColor: 'white',
-                    marginRight: 20,
-                    borderRadius: 20,
-                    padding: '10%',
-                  }}>
-                  <View style={{flex: 4}}>
-                    <FastImage
-                      style={{width: '100%', height: '100%'}}
-                      source={{
-                        uri:
-                          'https://lh3.googleusercontent.com/proxy/cvsHCI6mEHR9LsPZZLA4TK1AByLUssrraP-vaR95mmTyewua4VYGN305eH2kxgExaP_Ynb9uPkF5YopFVdlE-UIStOBXDtTL2khq3OweYwf0Mp9OBB9Y3TOlG7iazTVdQxaN6Q',
-                      }}></FastImage>
-                  </View>
-                  <View
-                    style={{
-                      flex: 1,
-                      justifyContent: 'center',
-                      alignItems: 'center',
-                    }}>
-                    <Text style={{fontSize: 20}}>{item.name}</Text>
-                  </View>
-                </View>
-              );
+              return <CategoryCard item={item}></CategoryCard>;
             }}
           />
         </View>

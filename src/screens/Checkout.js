@@ -16,17 +16,21 @@ import {
   Rating,
   VerticalList,
   Input,
+  Button,
 } from '../components';
 import Navigator from '../utils/Navigator';
 import ItemCard from '../components/AppSpecific/ItemCard';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {colors, metrics, fonts, text} from '../utils/Theme';
+import CheckoutCard from '../components/AppSpecific/CheckoutCard';
 
 import {useSelector} from 'react-redux';
 import {useDispatch} from 'react-redux';
 
 export default function Checkout(props) {
   const cartItems = useSelector((state) => state.Cart.items);
+  const totalAmount = useSelector((state) => state.Cart.totalPrice);
+
 
   console.log(cartItems, 'cart items');
   const [fname, setfname] = useState('');
@@ -34,7 +38,7 @@ export default function Checkout(props) {
   const [email, setemail] = useState('');
   const [phoneNumber, setphoneNumber] = useState('');
   const [address, setaddress] = useState('');
-
+  const [loading, setloading] = useState(false);
   const toArray = (obj) => {
     const arr = [];
     for (const [key, value] of Object.entries(obj)) {
@@ -44,7 +48,6 @@ export default function Checkout(props) {
   };
   //use this array below in your horizontal list
   const cartArray = toArray(cartItems);
-  console.log(cartArray, 'cart array');
 
   if (cartArray.length === 0) {
     return (
@@ -62,7 +65,8 @@ export default function Checkout(props) {
 
   return (
     <View style={{flex: 1, backgroundColor: colors.background}}>
-      <Header title={'title'}></Header>
+      <Header title={'Checkout'}></Header>
+
       <KeyboardAwareScrollView
         showsVerticalScrollIndicator={false}
         bounces={false}
@@ -70,9 +74,14 @@ export default function Checkout(props) {
           flex: 1,
           paddingHorizontal: metrics.defaultMargin,
         }}>
-        {/* <ListItem
-          data={this.props.cart.items}
-          renderItem={({item}) => this.renderItem(item)}></ListItem> */}
+        <View style={{marginBottom: '5%'}}>
+          <HorizontalList
+            data={cartArray}
+            renderItem={({item}) => {
+              return <CheckoutCard item={item}></CheckoutCard>;
+            }}
+          />
+        </View>
 
         <View
           style={{
@@ -84,7 +93,7 @@ export default function Checkout(props) {
           <View style={styles.info}>
             <Text style={styles.title}>SubTotal</Text>
             <Text style={styles.text}>
-              {/* ${this.props.cart.totalPrice.toFixed(2)} */}
+              ${totalAmount.toFixed(2)}
             </Text>
           </View>
           <View style={styles.info}>
@@ -165,6 +174,7 @@ export default function Checkout(props) {
             multiline={true}
             style={{height: 100}}
           />
+          <Button loading={loading} text={'Submit'}></Button>
         </View>
       </KeyboardAwareScrollView>
     </View>

@@ -1,4 +1,4 @@
-import {configureStore} from '@reduxjs/toolkit';
+import {configureStore, getDefaultMiddleware} from '@reduxjs/toolkit';
 import Cart from './Cart';
 import Favourites from './Favourites';
 import {
@@ -13,14 +13,33 @@ import {
 } from 'redux-persist';
 
 import {combineReducers} from 'redux';
+import Asyncstorage from '@react-native-async-storage/async-storage';
+import {PersistGate} from 'redux-persist/integration/react';
 
-const reducer = combineReducers({
+const rootReducer = combineReducers({
   Cart,
   Favourites,
 });
 
+// redux persist option
+const persistConfig = {
+  key: 'root',
+  version: 1,
+  storage: Asyncstorage,
+};
+
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+
 const store = configureStore({
-  reducer,
+  reducer: persistedReducer,
+  middleware: getDefaultMiddleware({
+    serializableCheck: {
+      ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+    },
+  }),
 });
 
-export default store;
+//persisted store
+let persistor = persistStore(store);
+
+export {store, persistor, PersistGate};

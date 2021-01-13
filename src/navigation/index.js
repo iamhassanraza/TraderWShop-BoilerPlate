@@ -12,6 +12,7 @@ import ProductDetail from '../screens/ProductDetail';
 import Checkout from '../screens/Checkout';
 import Search from '../screens/Search';
 import Favourites from '../screens/Favourites';
+import AllCategories from '../screens/AllCategories'
 
 const Stack = createStackNavigator();
 
@@ -22,7 +23,7 @@ export default function index() {
         Navigator.setTopLevelNavigator(navigatorRef);
       }}>
       <Stack.Navigator
-        initialRouteName="Home"
+        initialRouteName="AllCategories"
         screenOptions={{
           headerShown: false,
           cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
@@ -32,6 +33,7 @@ export default function index() {
         <Stack.Screen name="Checkout" component={Checkout} />
         <Stack.Screen name="Search" component={Search} />
         <Stack.Screen name="Favourites" component={Favourites} />
+        <Stack.Screen name="AllCategories" component={AllCategories} />
       </Stack.Navigator>
     </NavigationContainer>
   );

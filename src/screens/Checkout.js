@@ -19,6 +19,9 @@ import {
   Button,
 } from '../components';
 import Navigator from '../utils/Navigator';
+import Validation from '../utils/Validation';
+import Toast from '../utils/Toast';
+
 import ItemCard from '../components/AppSpecific/ItemCard';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {colors, metrics, fonts, text} from '../utils/Theme';
@@ -30,7 +33,6 @@ import {useDispatch} from 'react-redux';
 export default function Checkout(props) {
   const cartItems = useSelector((state) => state.Cart.items);
   const totalAmount = useSelector((state) => state.Cart.totalPrice);
-
 
   console.log(cartItems, 'cart items');
   const [fname, setfname] = useState('');
@@ -63,6 +65,57 @@ export default function Checkout(props) {
     );
   }
 
+  apiCall = async () => {
+    console.log('API CALL START');
+    setloading(true);
+    try {
+      const res = await fetch(
+        'https://reactnativeapps.herokuapp.com/customers',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            firstname: fname,
+            lastname: lname,
+            phonenumber: phoneNumber,
+            address: address,
+            email: email,
+            appname: 'Traderow Shop',
+          }),
+        },
+      );
+
+      const response = await res.json();
+      console.log(response);
+      setloading(false);
+      if (response.status) Navigator.navigateAndReset('Success');
+      else Toast('Some error occurred');
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  onButtonPress = () => {
+    if (!Validation.isValidField(fname || '')) {
+      return Toast('Please Enter Your First Name');
+    }
+    if (!Validation.isValidField(lname || '')) {
+      return Toast('Please Enter Your Last Name');
+    }
+    if (!Validation.isValidField(email || '')) {
+      return Toast('Please Enter Email');
+    }
+    if (!Validation.isValidField(phoneNumber || '')) {
+      return Toast('Please Enter Valid Phone Number');
+    }
+    if (!Validation.isValidField(address || '')) {
+      return Toast('Please Enter your Address');
+    }
+    apiCall();
+  };
+
   return (
     <View style={{flex: 1, backgroundColor: colors.background}}>
       <Header title={'Checkout'}></Header>
@@ -92,9 +145,7 @@ export default function Checkout(props) {
           }}>
           <View style={styles.info}>
             <Text style={styles.title}>SubTotal</Text>
-            <Text style={styles.text}>
-              ${totalAmount.toFixed(2)}
-            </Text>
+            <Text style={styles.text}>${totalAmount.toFixed(2)}</Text>
           </View>
           <View style={styles.info}>
             <Text style={styles.title}>Payment Mode</Text>
@@ -174,7 +225,10 @@ export default function Checkout(props) {
             multiline={true}
             style={{height: 100}}
           />
-          <Button loading={loading} text={'Submit'}></Button>
+          <Button
+            onPress={() => onButtonPress()}
+            loading={loading}
+            text={'Submit'}></Button>
         </View>
       </KeyboardAwareScrollView>
     </View>

@@ -84,6 +84,21 @@ const CartSlide = createSlice({
         // cart.items[action.payload.id].isFav = true;
       }
     },
+    setColor: (cart, action) => {
+      const {id} = action.payload;
+      console.log('called set color')
+      const existingItem = cart.items.hasOwnProperty(id);
+      if (existingItem) {
+        cart.items[id].color = action.payload.color;
+      }
+    },
+    setSize: (cart, action) => {
+      const {id} = action.payload;
+      const existingItem = cart.items.hasOwnProperty(id);
+      if (existingItem) {
+        cart.items[id].size = action.payload.size;
+      }
+    },
   },
 });
 
@@ -92,5 +107,12 @@ const formatPrice = (price) => {
   formatted_price = formatted_price.toFixed(2);
   return parseFloat(formatted_price);
 };
-export const {Add, Remove, emptyCart, addToFav} = CartSlide.actions;
+export const {
+  Add,
+  Remove,
+  emptyCart,
+  addToFav,
+  setColor,
+  setSize,
+} = CartSlide.actions;
 export default CartSlide.reducer;

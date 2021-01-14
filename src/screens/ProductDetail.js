@@ -15,14 +15,39 @@ import {
 } from '../components';
 import Navigator from '../utils/Navigator';
 import {colors, commonstyles, metrics} from '../utils/Theme';
-import {Add, Remove, emptyCart, addToFav} from '../store/Cart';
+import {
+  Add,
+  Remove,
+  emptyCart,
+  addToFav,
+  setColor,
+  setSize,
+} from '../store/Cart';
 import {useSelector} from 'react-redux';
 import {useDispatch} from 'react-redux';
 
 export default function ProductDetail(props) {
-  const [color, setcolor] = useState('red');
-  const [size, setsize] = useState(1);
   const {item} = props.route.params;
+
+  const [color, setcolor] = useState(
+    useSelector((state) => {
+      if (state.Cart.items.hasOwnProperty(item.id)) {
+        return state.Cart.items[item.id].color;
+      } else {
+        return 'red';
+      }
+    }),
+  );
+  const [size, setsize] = useState(
+    useSelector((state) => {
+      if (state.Cart.items.hasOwnProperty(item.id)) {
+        return state.Cart.items[item.id].size;
+      } else {
+        return 'XS';
+      }
+    }),
+  );
+
   const product = useSelector((state) => {
     if (state.Cart.items.hasOwnProperty(item.id)) {
       return state.Cart.items[item.id];
@@ -33,7 +58,7 @@ export default function ProductDetail(props) {
 
   const totalPrice = useSelector((state) => state.Cart.totalPrice);
   const dispatch = useDispatch();
-
+ 
   return (
     <View style={{flex: 1, backgroundColor: colors.lightBackground}}>
       <Header
@@ -63,10 +88,16 @@ export default function ProductDetail(props) {
           </Text>
         </View>
         <SizeInspector
-          getSelectedValue={(val) => setsize(val)}
+          getSelectedValue={(val) => {
+            dispatch(setSize({...item, size: val}));
+            setsize(val);
+          }}
           arr={['XS', 'S', 'M', 'L']}></SizeInspector>
         <ColorInspector
-          getSelectedValue={(val) => setcolor(val)}
+          getSelectedValue={(val) => {
+            dispatch(setColor({...item, color: val}));
+            setcolor(val);
+          }}
           arr={['red', 'yellow', 'orange', 'green', 'blue']}></ColorInspector>
       </View>
       <View

@@ -28,6 +28,12 @@ export default function Home() {
   return (
     <View style={{flex: 1, backgroundColor: colors.background}}>
       <Header
+        leftComponent={() => (
+          <AddToFav
+            onPress={() => Navigator.navigate('Favourites')}
+            size={25}
+            disabled></AddToFav>
+        )}
         rightCompnent={() => (
           <View
             style={{
@@ -35,18 +41,14 @@ export default function Home() {
               alignItems: 'center',
               marginRight: 15,
             }}>
-            <AddToFav
-              onPress={() => Navigator.navigate('Favourites')}
-              size={25}
-              disabled></AddToFav>
             <View style={{marginLeft: 1}}>
               <CartIcon
                 onPress={() => Navigator.navigate('Checkout')}></CartIcon>
             </View>
           </View>
         )}
-        hideLeft
-        title={'Title'}></Header>
+        // hideLeft
+        title={''}></Header>
 
       <ScrollView
         showsVerticalScrollIndicator={false}

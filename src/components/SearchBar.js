@@ -13,9 +13,12 @@ import Icon from 'react-native-vector-icons/AntDesign';
 const height = metrics.height / 18;
 
 export default function SearchBar(props) {
-  const placeholder = props.placeholder ? props.placeholder : 'Search';
+  const placeholder = props.placeholder ? props.placeholder : 'Search the cloths you need';
   return (
     <View style={[styles.container, props.containerStyle]}>
+      <View style={styles.iconView}>
+        <Icon name="search1" size={height / 2.5} color={colors.grey}></Icon>
+      </View>
       {!props.disable ? (
         <TextInput
           autoFocus={true}
@@ -36,9 +39,6 @@ export default function SearchBar(props) {
           </View>
         </TouchableWithoutFeedback>
       )}
-      <View style={styles.iconView}>
-        <Icon name="search1" size={height / 2.5} color={'white'}></Icon>
-      </View>
     </View>
   );
 }
@@ -61,10 +61,10 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     justifyContent: 'center',
     alignItems: 'center',
+    borderBottomLeftRadius: 10,
+    borderTopLeftRadius: 10,
     width: 50,
-    backgroundColor: colors.primary,
-    borderTopEndRadius: 10,
-    borderBottomEndRadius: 10,
+    // backgroundColor: colors.primary,
   },
   textInput: {
     flex: 7,
@@ -72,7 +72,8 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     fontSize: 16,
     paddingHorizontal: 15,
-    borderBottomLeftRadius: 10,
-    borderTopLeftRadius: 10,
+
+    borderTopEndRadius: 10,
+    borderBottomEndRadius: 10,
   },
 });

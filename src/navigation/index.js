@@ -14,6 +14,7 @@ import Search from '../screens/Search';
 import Favourites from '../screens/Favourites';
 import AllCategories from '../screens/AllCategories';
 import AllProducts from '../screens/AllProducts';
+import Success from '../screens/Success';
 
 const Stack = createStackNavigator();
 
@@ -36,6 +37,7 @@ export default function index() {
         <Stack.Screen name="Favourites" component={Favourites} />
         <Stack.Screen name="AllCategories" component={AllCategories} />
         <Stack.Screen name="AllProducts" component={AllProducts} />
+        <Stack.Screen name="Success" component={Success} />
       </Stack.Navigator>
     </NavigationContainer>
   );

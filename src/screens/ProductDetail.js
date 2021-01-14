@@ -58,7 +58,7 @@ export default function ProductDetail(props) {
 
   const totalPrice = useSelector((state) => state.Cart.totalPrice);
   const dispatch = useDispatch();
- 
+
   return (
     <View style={{flex: 1, backgroundColor: colors.lightBackground}}>
       <Header
@@ -119,7 +119,9 @@ export default function ProductDetail(props) {
                 dispatch(Remove({...item}));
               }}></QuantityView>
           </View>
-          <Text style={commonstyles.smallText}>Total Price: ${totalPrice}</Text>
+          <Text style={commonstyles.smallText}>
+            Total Price: ${totalPrice.toFixed(2)}
+          </Text>
         </View>
         <Button
           onPress={() => {

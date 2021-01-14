@@ -41,6 +41,7 @@ export default function Checkout(props) {
   const [phoneNumber, setphoneNumber] = useState('');
   const [address, setaddress] = useState('');
   const [loading, setloading] = useState(false);
+  
   const toArray = (obj) => {
     const arr = [];
     for (const [key, value] of Object.entries(obj)) {

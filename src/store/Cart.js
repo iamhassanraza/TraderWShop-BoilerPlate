@@ -71,7 +71,7 @@ const CartSlide = createSlice({
     },
     emptyCart: (cart, action) => {
       cart.totalPrice = 0;
-      cart.items = [];
+      cart.items = {};
     },
     addToFav: (cart, action) => {
       if (cart.favItems.hasOwnProperty(action.payload.id)) {
@@ -86,7 +86,7 @@ const CartSlide = createSlice({
     },
     setColor: (cart, action) => {
       const {id} = action.payload;
-      console.log('called set color')
+      console.log('called set color');
       const existingItem = cart.items.hasOwnProperty(id);
       if (existingItem) {
         cart.items[id].color = action.payload.color;

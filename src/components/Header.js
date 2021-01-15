@@ -29,7 +29,7 @@ export default function Header(props) {
 
   const _renderInMiddle = () => {
     return (
-      <Text style={{fontSize: metrics.height * 0.03, fontWeight: 'bold'}}>
+      <Text style={{fontSize: metrics.height * 0.03, fontWeight: 'bold',textTransform:'capitalize'}}>
         {props.title}
       </Text>
     );

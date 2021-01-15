@@ -93,12 +93,12 @@ export default function ProductDetail(props) {
             setsize(val);
           }}
           arr={['XS', 'S', 'M', 'L']}></SizeInspector>
-        <ColorInspector
+        {/* <ColorInspector
           getSelectedValue={(val) => {
             dispatch(setColor({...item, color: val}));
             setcolor(val);
           }}
-          arr={['red', 'yellow', 'orange', 'green', 'blue']}></ColorInspector>
+          arr={['red', 'yellow', 'orange', 'green', 'blue']}></ColorInspector> */}
       </View>
       <View
         style={{

@@ -18,13 +18,6 @@ class InputBox extends Component {
   render() {
     return (
       <View>
-        {this.props.label ? (
-          <Text style={[styles.text, this.props.textStyle]}>
-            {this.props.label}
-          </Text>
-        ) : (
-          <View></View>
-        )}
         <View style={[styles.container, this.props.style]}>
           <TextInput
             ref={(component) => (this._textInput = component)}

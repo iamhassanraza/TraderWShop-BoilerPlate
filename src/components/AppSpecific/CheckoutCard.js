@@ -55,10 +55,10 @@ export default function CheckoutCard(props) {
           <View
             style={{
               flexDirection: 'row',
-              justifyContent: 'space-around',
+              // justifyContent: 'space-around',
               alignItems: 'center',
             }}>
-            <View
+            {/* <View
               style={{
                 justifyContent: 'center',
                 alignItems: 'center',
@@ -72,11 +72,12 @@ export default function CheckoutCard(props) {
                   borderRadius: 10,
                   backgroundColor: item.color,
                 }}></View>
-            </View>
+            </View> */}
             <View
               style={{
                 justifyContent: 'center',
                 alignItems: 'center',
+                marginRight:20
               }}>
               <Text style={{...styles.heading}}>Size</Text>
               <Text style={{...styles.text}}>{item.size}</Text>

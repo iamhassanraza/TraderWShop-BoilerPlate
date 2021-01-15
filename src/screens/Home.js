@@ -22,9 +22,12 @@ import Navigator from '../utils/Navigator';
 import ItemCard from '../components/AppSpecific/ItemCard';
 import CategoryCard from '../components/AppSpecific/CategoryCart';
 import data from '../data';
-
+import {useSelector} from 'react-redux';
 import {colors, commonstyles, metrics} from '../utils/Theme';
 export default function Home() {
+  const AllItems = useSelector((state) => {
+    return state.Cart.products;
+  });
   return (
     <View style={{flex: 1, backgroundColor: colors.background}}>
       <Header
@@ -107,7 +110,7 @@ export default function Home() {
 
         <VerticalList
           scrollEnabled={false}
-          data={data.products}
+          data={AllItems}
           renderItem={({item}) => (
             <TouchableOpacity
               onPress={() => Navigator.navigate('ProductDetail', {item})}

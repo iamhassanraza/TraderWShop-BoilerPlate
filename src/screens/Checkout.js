@@ -145,7 +145,7 @@ export default function Checkout(props) {
             paddingVertical: '5%',
           }}>
           <View style={styles.info}>
-            <Text style={styles.title}>SubTotal</Text>
+            <Text style={styles.title}>Total Amount</Text>
             <Text style={styles.text}>${totalAmount.toFixed(2)}</Text>
           </View>
           <View style={styles.info}>

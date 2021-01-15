@@ -25,9 +25,9 @@ import data from '../data';
 // SIMPLEST WAY TO REDUCE CODE = CREATE SLICE
 
 const initial_cart = {
-  items: {},
-  cart: {},
-  favItems: {},
+  products: data.products,
+  items: [],
+  favItems: [],
   totalItems: 0,
   totalPrice: 0,
 };
@@ -37,41 +37,32 @@ const CartSlide = createSlice({
   initialState: initial_cart,
   reducers: {
     Add: (cart, action) => {
-      // cart = state
-      //write reducer logic here
-      //you can directyl mutate state here
       const {id} = action.payload;
-      const existingItem = cart.items.hasOwnProperty(id);
+      const existingItem = cart.items.find((item) => item.id == id);
       if (existingItem) {
-        cart.items[id].quantity += 1;
-        cart.items[id].color = action.payload.color;
-        cart.items[id].size = action.payload.size;
+        existingItem.quantity += 1;
       } else {
-        cart.items[id] = {...action.payload, quantity: 1};
+        cart.items.push({...action.payload, quantity: 1});
       }
-      cart.totalItems++;
       cart.totalPrice = cart.totalPrice + formatPrice(action.payload.price);
+      cart.totalItems++;
     },
-    Remove: (cart, action) => {
-      const {id} = action.payload;
-      const existingItem = cart.items.hasOwnProperty(id);
-      if (existingItem) {
-        if (cart.items[id].quantity == 1) {
-          delete cart.items[id];
+    Remove: (state, action) => {
+      const {payload} = action;
+      const item = state.items.find((item) => item.id == payload.id);
+      if (item) {
+        if (item.quantity == 1) {
+          const arr = state.items.filter((item) => item.id !== payload.id);
+          state.items = arr;
         } else {
-          cart.items[id].quantity -= 1;
-          cart.items[id].color = action.payload.color;
-          cart.items[id].size = action.payload.size;
+          item.quantity -= 1;
         }
-        if (cart.totalItems > 0) {
-          cart.totalItems--;
-        }
-        cart.totalPrice = cart.totalPrice - formatPrice(action.payload.price);
+        state.totalPrice = state.totalPrice - formatPrice(payload.price);
       }
     },
     emptyCart: (cart, action) => {
       cart.totalPrice = 0;
-      cart.items = {};
+      cart.items = [];
     },
     addToFav: (cart, action) => {
       if (cart.favItems.hasOwnProperty(action.payload.id)) {
@@ -79,25 +70,28 @@ const CartSlide = createSlice({
         delete cart.favItems[action.payload.id];
       } else {
         console.log('adding to fav');
-
         cart.favItems[action.payload.id] = action.payload;
-        // cart.items[action.payload.id].isFav = true;
       }
     },
     setColor: (cart, action) => {
       const {id} = action.payload;
-      console.log('called set color');
-      const existingItem = cart.items.hasOwnProperty(id);
+      const existingItem = cart.items.find((item) => item.id == id);
       if (existingItem) {
-        cart.items[id].color = action.payload.color;
+        existingItem.color = action.payload.color;
       }
     },
     setSize: (cart, action) => {
       const {id} = action.payload;
-      const existingItem = cart.items.hasOwnProperty(id);
+      const existingItem = cart.items.find((item) => item.id == id);
+      const existingIteminProducts = cart.products.find(
+        (item) => item.id == id,
+      );
       if (existingItem) {
-        cart.items[id].size = action.payload.size;
+        existingItem.size = action.payload.size;
       }
+      existingIteminProducts.size = action.payload.size;
+      console.log('existing item', existingIteminProducts);
+      console.log('existing item 2', existingItem);
     },
   },
 });

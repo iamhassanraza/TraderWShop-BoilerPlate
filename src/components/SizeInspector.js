@@ -3,7 +3,7 @@ import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import {colors, text, metrics} from '../utils/Theme';
 
 export default function SizeInspector(props) {
-  const [selectedSize, setselectedSize] = useState(props.arr[0]);
+  const value = props.value ? props.value : props.arr[0];
   return (
     <View style={{height: 80}}>
       <View
@@ -23,7 +23,6 @@ export default function SizeInspector(props) {
             key={index}
             activeOpacity={1}
             onPress={() => {
-              setselectedSize(val);
               if (props.getSelectedValue) {
                 props.getSelectedValue(val);
               }
@@ -37,13 +36,12 @@ export default function SizeInspector(props) {
               justifyContent: 'center',
               alignItems: 'center',
               marginRight: '3%',
-              backgroundColor:
-                selectedSize === val ? colors.lightGrey : 'white',
+              backgroundColor: value === val ? colors.lightGrey : 'white',
             }}>
             <Text
               style={[
                 text.subheading,
-                {color: selectedSize === val ? colors.primary : 'black'},
+                {color: value === val ? colors.primary : 'black'},
               ]}>
               {val}
             </Text>

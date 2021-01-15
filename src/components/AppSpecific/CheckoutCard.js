@@ -1,19 +1,22 @@
 import React from 'react';
 import {StyleSheet, Text, View, TouchableWithoutFeedback} from 'react-native';
 import {colors, metrics, text} from '../../utils/Theme';
-import {FastImage} from '../../components';
+import {FastImage, QuantityView} from '../../components';
 import Navigator from '../../utils/Navigator';
+import {Add, Remove} from '../../store/Cart';
+import {useSelector} from 'react-redux';
+import {useDispatch} from 'react-redux';
 
 export default function CheckoutCard(props) {
   const {item} = props;
-
+  const dispatch = useDispatch();
   return (
     <TouchableWithoutFeedback
       onPress={() => Navigator.navigate('ProductDetail', {item})}>
       <View
         style={{
           flexDirection: 'row',
-          height: metrics.height * 0.18,
+          height: metrics.height * 0.2,
           width: metrics.width * 0.8,
           backgroundColor: 'white',
           justifyContent: 'space-around',
@@ -58,7 +61,7 @@ export default function CheckoutCard(props) {
               justifyContent: 'space-around',
               alignItems: 'center',
             }}>
-            <View
+            {/* <View
               style={{
                 justifyContent: 'center',
                 alignItems: 'center',
@@ -72,7 +75,7 @@ export default function CheckoutCard(props) {
                   borderRadius: 10,
                   backgroundColor: item.color,
                 }}></View>
-            </View>
+            </View> */}
             <View
               style={{
                 justifyContent: 'center',
@@ -86,9 +89,19 @@ export default function CheckoutCard(props) {
                 justifyContent: 'center',
                 alignItems: 'center',
               }}>
-              <Text style={{...styles.heading}}>QTY</Text>
-              <Text style={{...styles.text}}>{item.quantity}</Text>
+              <Text style={{...styles.heading}}>Subtotal</Text>
+              <Text style={{...styles.text}}>${(item.quantity * item.price).toFixed(2)}</Text>
             </View>
+          </View>
+          <View style={{marginTop:'4%'}}>
+            <QuantityView
+              value={item?.quantity || 0}
+              onAdd={() => {
+                dispatch(Add({...item}));
+              }}
+              onMinus={() => {
+                dispatch(Remove({...item}));
+              }}></QuantityView>
           </View>
         </View>
       </View>
@@ -98,7 +111,7 @@ export default function CheckoutCard(props) {
 
 const styles = StyleSheet.create({
   text: {
-    fontSize: 20,
+    fontSize: 16,
     marginTop: 10,
     fontWeight: '600',
   },

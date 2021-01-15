@@ -13,7 +13,7 @@ import Icon from 'react-native-vector-icons/AntDesign';
 const height = metrics.height / 18;
 
 export default function SearchBar(props) {
-  const placeholder = props.placeholder ? props.placeholder : 'Search the cloths you need';
+  const placeholder = props.placeholder ? props.placeholder : 'Search the items you need';
   return (
     <View style={[styles.container, props.containerStyle]}>
       <View style={styles.iconView}>

@@ -50,6 +50,7 @@ export default function ItemCard(props) {
             marginBottom: metrics.smallMargin,
             fontSize: 18,
             fontWeight: '500',
+            textTransform:'capitalize'
           }}>
           {item.productname}
         </Text>

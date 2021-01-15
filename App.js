@@ -8,11 +8,13 @@ import {LogBox} from 'react-native';
 import NavigationContainer from './src/navigation';
 import {Provider} from 'react-redux';
 import {store, persistor, PersistGate} from './src/store/ConfigureStore';
+import RNBootSplash from 'react-native-bootsplash'
 
 const App = () => {
   useEffect(() => {
     LogBox.ignoreAllLogs();
   }, []);
+  RNBootSplash.hide()
   return (
     <RootSiblingParent>
       <Provider store={store}>

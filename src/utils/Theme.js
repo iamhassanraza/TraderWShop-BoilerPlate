@@ -103,6 +103,7 @@ export const commonstyles = {
   largeText: {
     fontSize: 25,
     fontWeight: '600',
+    textTransform:'capitalize'
   },
   smallText: {
     fontSize: 18,

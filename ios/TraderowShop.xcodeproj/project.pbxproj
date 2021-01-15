@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* TraderowShopTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* TraderowShopTests.m */; };
-		046AF9A725B011A5003CF04E /* BootSplash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 046AF9A625B011A5003CF04E /* BootSplash.storyboard */; };
 		12BF317BF29D725DED511A12 /* libPods-TraderowShop.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E3E28F111AF9A012E8C18771 /* libPods-TraderowShop.a */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
@@ -19,6 +18,7 @@
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* TraderowShopTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* TraderowShopTests.m */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		B4A82FB625B1CBB20020163B /* BootSplash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4A82FB525B1CBB20020163B /* BootSplash.storyboard */; };
 		F34FF29F5EE9654E5BAE3299 /* libPods-TraderowShop-TraderowShopTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E391EBDCD921507A4CF52B35 /* libPods-TraderowShop-TraderowShopTests.a */; };
 		FCD3AAD1830679D9822B2B34 /* libPods-TraderowShop-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CF5A49262F81FB129867704B /* libPods-TraderowShop-tvOS.a */; };
 /* End PBXBuildFile section */
@@ -45,7 +45,6 @@
 		00E356EE1AD99517003FC87E /* TraderowShopTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TraderowShopTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* TraderowShopTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TraderowShopTests.m; sourceTree = "<group>"; };
-		046AF9A625B011A5003CF04E /* BootSplash.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = BootSplash.storyboard; sourceTree = "<group>"; };
 		11F40639E8094F98BDB41741 /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* TraderowShop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TraderowShop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = TraderowShop/AppDelegate.h; sourceTree = "<group>"; };
@@ -68,6 +67,7 @@
 		94343325A007C56812055721 /* Pods-TraderowShop-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TraderowShop-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-TraderowShop-tvOSTests/Pods-TraderowShop-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		9E4D637E9A77D197EBDB9EAC /* Pods-TraderowShop-TraderowShopTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TraderowShop-TraderowShopTests.release.xcconfig"; path = "Target Support Files/Pods-TraderowShop-TraderowShopTests/Pods-TraderowShop-TraderowShopTests.release.xcconfig"; sourceTree = "<group>"; };
 		A23BDD43BCB04F098484B2ED /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
+		B4A82FB525B1CBB20020163B /* BootSplash.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = BootSplash.storyboard; path = TraderowShop/BootSplash.storyboard; sourceTree = "<group>"; };
 		BBAF74FCE833419C9D4CE81B /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
 		BBEFECE2940B6A298E674438 /* libPods-TraderowShop-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TraderowShop-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C592F7F5C3B3457294768308 /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
@@ -159,10 +159,10 @@
 			isa = PBXGroup;
 			children = (
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
-				046AF9A625B011A5003CF04E /* BootSplash.storyboard */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
+				B4A82FB525B1CBB20020163B /* BootSplash.storyboard */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
@@ -382,7 +382,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				046AF9A725B011A5003CF04E /* BootSplash.storyboard in Resources */,
+				B4A82FB625B1CBB20020163B /* BootSplash.storyboard in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 			);
@@ -772,7 +772,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ecommerceshopping.traderowshop;
 				PRODUCT_NAME = TraderowShop;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -794,7 +794,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ecommerceshopping.traderowshop;
 				PRODUCT_NAME = TraderowShop;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";

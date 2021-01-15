@@ -122,7 +122,7 @@ export default function ProductDetail(props) {
           onPress={() => {
             Navigator.navigate('Checkout');
           }}
-          text={'Go To Checkout'}></Button>
+          text={'Add to Cart'}></Button>
       </View>
     </View>
   );

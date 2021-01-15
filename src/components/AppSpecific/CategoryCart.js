@@ -32,7 +32,7 @@ export default function CategoryCart(props) {
             justifyContent: 'center',
             alignItems: 'center',
           }}>
-          <Text style={{fontSize: 20}}>{item.category}</Text>
+          <Text style={{fontSize: 20,textTransform:'capitalize'}}>{item.category}</Text>
         </View>
       </View>
     </TouchableOpacity>
